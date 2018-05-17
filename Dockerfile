@@ -21,6 +21,9 @@ RUN set -x \
  && apt-get clean \
  && set +x
 
+# install cron
+RUN apt-get install -qqy cron
+
 ENV ELK_VERSION 6.2.4
 
 ### install Elasticsearch
@@ -112,6 +115,14 @@ ADD ./kibana.yml ${KIBANA_HOME}/config/kibana.yml
 
 ADD ./start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
+
+# configure cron
+ADD ./es_delete_by_query.sh /usr/local/bin/es_clear_log.sh
+ADD ./logclear_cron /etc/cron.d/logclear
+
+RUN chmod +x /etc/cron.d/logclear
+RUN chmod +x /usr/local/bin/es_clear_log.sh
+
 
 EXPOSE 5601
 VOLUME /var/lib/elasticsearch /data/log
