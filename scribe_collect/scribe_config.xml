@@ -1,0 +1,13 @@
+<config>
+    <RemoteServer>10.65.236.22</RemoteServer>
+    <Port>11463</Port>
+    <Interval>1</Interval>
+    <LineNumber>10</LineNumber>
+    <ServerConfig>
+        <Server>
+            <Name>coreserver_pfb</Name>
+            <LogPath>/data/shopee/ShopServer/log/</LogPath>
+            <LogKeyword>shop_server.log</LogKeyword>
+        </Server>
+    </ServerConfig>
+</config>

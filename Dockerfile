@@ -23,6 +23,8 @@ RUN set -x \
 
 # install cron
 RUN apt-get install -qqy cron
+# for future editing of internal config
+RUN apt-get install -qqy vim
 
 ENV ELK_VERSION 6.2.4
 
